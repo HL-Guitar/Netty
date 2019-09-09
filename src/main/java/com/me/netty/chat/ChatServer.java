@@ -34,7 +34,7 @@ public class ChatServer {
             System.out.println("Netty Chat Server启动......");
             ChannelFuture f = b.bind(port).sync();
             if(f.isSuccess()){
-                System.out.println("成功！！");
+                System.out.println("启动成功！！");
             }
             f.channel().closeFuture().sync();// 等待服务端监听端口关闭
         } finally {

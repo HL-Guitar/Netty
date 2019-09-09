@@ -42,12 +42,12 @@ public class ChatClient {
                             pipeline.addLast(new ChatClientHandler());
                         }
                     });
-
+            //获取一个Future
             ChannelFuture cf=bootstrap.connect(host,port).sync();
             Channel channel=cf.channel();
             System.out.println("------"+channel.localAddress().toString().substring(1)+"------");
             Scanner scanner=new Scanner(System.in);
-            while (scanner.hasNextLine()){
+            while (scanner.hasNextLine()){ //输入聊天信息
                 String msg=scanner.nextLine();
                 channel.writeAndFlush(msg+"\r\n");
             }
