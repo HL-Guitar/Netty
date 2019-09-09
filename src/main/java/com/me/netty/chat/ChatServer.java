@@ -30,7 +30,7 @@ public class ChatServer {
                     .channel(NioServerSocketChannel.class)
                     .option(ChannelOption.SO_BACKLOG, 128) //设置bossGroup
                     .childOption(ChannelOption.SO_KEEPALIVE, true) //设置workerGroup，可以拓展到 attr,childattr
-                    .childHandler(new ChatServerChannelInitializer());
+                    .childHandler(new ChatServerChannelInitializer()); //设置通道初始化对象
             System.out.println("Netty Chat Server启动......");
             ChannelFuture f = b.bind(port).sync();
             if(f.isSuccess()){
